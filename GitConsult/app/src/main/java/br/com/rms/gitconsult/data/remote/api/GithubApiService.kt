@@ -16,5 +16,5 @@ interface GithubApiService {
     fun loadUserRepos(
         @Query(KEY_PAGE) page: Int,
         @Query(KEY_PER_PAGE) perPage: Int
-    ): Single<ApiRepoResponse>
+    ): Single<List<ApiRepoResponse>>
 }
