@@ -4,12 +4,12 @@ import androidx.room.Entity
 
 @Entity(primaryKeys = ["id"])
 data class Repo (
-    val id: Int?,
-    val name: String?,
-    val `private`: Boolean?,
-    val created_at: String?,
-    val updated_at: String?,
-    val forks_count: Int?,
-    val stargazers_count: Int?,
-    val watchers_count: Int?
+    var id: Int? = 0,
+    var name: String? = "",
+    var `private`: Boolean?= false,
+    var created_at: String? = "",
+    var updated_at: String? = "",
+    var forks_count: Int? = 0,
+    var stargazers_count: Int? = 0,
+    var watchers_count: Int? = 0
     )

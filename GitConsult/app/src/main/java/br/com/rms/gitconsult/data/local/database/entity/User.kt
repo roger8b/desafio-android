@@ -4,12 +4,12 @@ import androidx.room.Entity
 
 @Entity(primaryKeys = ["id"])
 data class User(
-    val id: Int?,
-    val login: String?,
-    val name: String?,
-    val email: String?,
-    val public_repos: Int?,
-    val public_gists: Int?,
-    val followers: Int?,
-    val following: Int?
+    var id: Int? = 0,
+    var login: String? = "",
+    var name: String? = "",
+    var email: String? = "",
+    var public_repos: Int? = 0,
+    var public_gists: Int? = 0,
+    var followers: Int? = 0,
+    var following: Int? =0
     )
