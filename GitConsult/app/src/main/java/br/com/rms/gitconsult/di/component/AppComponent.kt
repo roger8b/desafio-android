@@ -2,8 +2,7 @@ package br.com.rms.gitconsult.di.component
 
 import android.app.Application
 import br.com.rms.gitconsult.MyApplication
-import br.com.rms.gitconsult.di.model.ApiModule
-import br.com.rms.gitconsult.di.model.DataBaseModule
+import br.com.rms.gitconsult.di.model.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.support.AndroidSupportInjectionModule
@@ -13,7 +12,10 @@ import javax.inject.Singleton
     modules = [
         ApiModule::class,
         DataBaseModule::class,
-        AndroidSupportInjectionModule::class
+        ActivityModule::class,
+        FragmentModule::class,
+        AndroidSupportInjectionModule::class,
+        PresenterModule::class
     ]
 )
 @Singleton

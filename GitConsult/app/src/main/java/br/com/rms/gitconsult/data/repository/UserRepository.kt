@@ -5,20 +5,25 @@ import br.com.rms.gitconsult.data.local.database.dao.UserDao
 import br.com.rms.gitconsult.data.local.database.entity.User
 import br.com.rms.gitconsult.data.remote.api.GithubApiService
 import br.com.rms.gitconsult.data.remote.model.user.ApiUserResponse
+import br.com.rms.gitconsult.utils.validations.user.UserValidations
 import io.reactivex.Completable
 import io.reactivex.CompletableSource
-import io.reactivex.Single
 import javax.inject.Inject
 
 class UserRepository @Inject constructor(
     private val userDao: UserDao,
-    private val apiService: GithubApiService
+    private val apiService: GithubApiService,
+    private val userValidations: UserValidations
 ) {
 
+
     fun loadRemoteUserData(user: String): Completable {
-        return apiService.loadUserData(user).flatMapCompletable {
-            saveUserData(it)
+        return Completable.fromCallable { userValidations.validateLoginData(user) }.doOnComplete {
+            apiService.loadUserData(user).flatMapCompletable {
+                saveUserData(it)
+            }
         }
+
     }
 
     fun saveUserData(apiUserResponse: ApiUserResponse): CompletableSource? {

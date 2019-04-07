@@ -4,4 +4,6 @@
     <string name="user_label">User</string>
     <string name="password_label">Password</string>
     <string name="login_label">Login</string>
+    <string name="error_on_login">Ocorren um erro durante o login</string>
+    <string name="error_user_name_is_empty">Campo nome de usuário vazio</string>
 </resources>

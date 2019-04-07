@@ -38,6 +38,7 @@ class ApiModule {
     internal fun provideOkhttpClient(cache: Cache): OkHttpClient {
         return OkHttpClient.Builder()
             .cache(cache)
+
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .build()

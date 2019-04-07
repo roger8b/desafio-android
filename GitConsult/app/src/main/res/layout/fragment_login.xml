@@ -9,8 +9,8 @@
 
     <ImageView
             tools:alpha="1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             tools:srcCompat="@drawable/logo_github"
             android:id="@+id/ivGitLogo"
             app:layout_constraintStart_toStartOf="parent"
