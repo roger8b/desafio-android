@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorPrimary">#263238</color>
+    <color name="colorPrimaryDark">#000a12</color>
+    <color name="colorAccent">#4f5b62</color>
+
+    <color name="lightIcon">#FFFFFF</color>
+
+    <color name="lightText">#FFFFFF</color>
+    <color name="textLightAlpha">#A8B4C4</color>
+
+    <color name="darkText">#E6000000</color>
+
+    <color name="lightRippleColor">#FFFFFF</color>
+    <color name="darkRippleColor">#1A000000</color>
+
+    <color name="positiveButtonBackground">#263238</color>
+    <color name="positiveButtonText">#FFFFFF</color>
 </resources>
