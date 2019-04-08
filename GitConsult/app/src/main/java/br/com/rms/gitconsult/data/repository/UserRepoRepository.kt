@@ -29,7 +29,8 @@ class UserRepoRepository @Inject constructor(
                     it.stargazers_count,
                     it.watchers_count,
                     it.description,
-                    it.language
+                    it.language,
+                    it.html_url
                 )
                 repoList.add(repo)
             }

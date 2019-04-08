@@ -13,5 +13,6 @@ data class Repository (
     var stargazers_count: Int? = 0,
     var watchers_count: Int? = 0,
     var description: String? = "",
-    var language: String? = ""
+    var language: String? = "",
+    var html_url: String?= ""
     )

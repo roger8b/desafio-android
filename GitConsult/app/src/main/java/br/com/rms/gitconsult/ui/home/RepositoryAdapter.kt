@@ -13,6 +13,9 @@ import kotlinx.android.synthetic.main.item_repository.*
 
 class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>() {
 
+    var onItemClick: ((Repository) -> Unit)? = null
+
+
     private val Repos = mutableListOf<Repository>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RepositoryAdapter.ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -23,21 +26,24 @@ class RepositoryAdapter : RecyclerView.Adapter<RepositoryAdapter.ViewHolder>() {
     override fun getItemCount(): Int = Repos.size
 
     override fun onBindViewHolder(holder: RepositoryAdapter.ViewHolder, position: Int) {
-        val repo = Repos[position]
+        val repository = Repos[position]
 
-        holder.tvRepoName.text = repo.name
-        holder.tvRepoDescription.text = repo.description
-        holder.tvForkCount.text = repo.forks_count.toString()
-        holder.tvStars.text = repo.stargazers_count.toString()
-        holder.tvLanguage.text = repo.language
+        holder.cardView.setOnClickListener {
+            onItemClick?.invoke(repository)
+        }
+        holder.tvRepoName.text = repository.name
+        holder.tvRepoDescription.text = repository.description
+        holder.tvForkCount.text = repository.forks_count.toString()
+        holder.tvStars.text = repository.stargazers_count.toString()
+        holder.tvLanguage.text = repository.language
     }
 
     fun addRepository(newRepositories: List<Repository>) {
         val oldRepoList = mutableListOf<Repository>()
         oldRepoList.addAll(Repos)
         Repos.addAll(newRepositories)
-        val RepoDiffUtilCallback = RepoDiffUtilCallback(oldRepoList, Repos)
-        DiffUtil.calculateDiff(RepoDiffUtilCallback).dispatchUpdatesTo(this)
+        val repoDiffUtilCallback = RepoDiffUtilCallback(oldRepoList, Repos)
+        DiffUtil.calculateDiff(repoDiffUtilCallback).dispatchUpdatesTo(this)
     }
 
     inner class ViewHolder(override val containerView: View) : RecyclerView.ViewHolder(containerView), LayoutContainer
