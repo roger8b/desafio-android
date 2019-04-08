@@ -24,4 +24,6 @@
 5.  Dentro da pasta devera conter um arquivo GitConsult selecione o mesmo para importar.
 
 ### Pendencias.
+- Requisitos: Fiz o teste mas não me atentei ao requisitos e logica de funcionamento solicitada. Acabei fazendo algo diferente do solicitado  :(. 
+
 - Testes: Não consegui atender.
