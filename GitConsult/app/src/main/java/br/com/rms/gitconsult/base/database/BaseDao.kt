@@ -1,17 +1,14 @@
 package br.com.rms.gitconsult.base.database
 
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Update
+import androidx.room.*
 
 
 interface BaseDao<T> {
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(vararg obj:T)
 
-    @Update
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun update(vararg obj:T)
 
     @Delete

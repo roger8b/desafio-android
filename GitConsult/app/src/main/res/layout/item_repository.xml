@@ -15,7 +15,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -24,8 +23,7 @@
             app:cardPreventCornerOverlap="true"
             app:cardElevation="3dp"
             app:contentPadding="3dp"
-            app:cardUseCompatPadding="true"
-            app:cardBackgroundColor="@drawable/background_light_ripple">
+            app:cardUseCompatPadding="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
@@ -34,18 +32,16 @@
 
             <TextView
                     android:text="Desafio Android"
-                    android:layout_width="0dp"
+                    android:layout_width="331dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/tvRepoName"
-                    app:layout_constraintStart_toStartOf="parent"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:fontFamily="@font/roboto_medium"
                     android:textSize="18sp"
                     android:textColor="@color/darkText"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginEnd="16dp"/>
+                    tools:layout_editor_absoluteY="8dp"
+                    tools:layout_editor_absoluteX="16dp"/>
 
             <ImageView
                     android:layout_width="wrap_content"

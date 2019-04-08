@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.room.Room
 import br.com.rms.gitconsult.data.local.database.AppDatabase
 import br.com.rms.gitconsult.data.local.database.DATABASE_NAME
-import br.com.rms.gitconsult.data.local.database.dao.RepoDao
+import br.com.rms.gitconsult.data.local.database.dao.RepositoryDao
 import br.com.rms.gitconsult.data.local.database.dao.UserDao
 import dagger.Module
 import dagger.Provides
@@ -29,8 +29,8 @@ class DataBaseModule {
 
     @Provides
     @Singleton
-    internal fun provideRepoDao(appDatabase: AppDatabase): RepoDao {
-        return appDatabase.repoDao()
+    internal fun provideRepoDao(appDatabase: AppDatabase): RepositoryDao {
+        return appDatabase.repositoryDao()
     }
 
 

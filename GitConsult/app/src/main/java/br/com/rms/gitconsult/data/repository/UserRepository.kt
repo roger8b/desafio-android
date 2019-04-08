@@ -16,14 +16,20 @@ class UserRepository @Inject constructor(
     private val userValidations: UserValidations
 ) {
 
+    var userName = ""
 
-    fun loadRemoteUserData(user: String): Completable {
-        return Completable.fromCallable { userValidations.validateLoginData(user) }.doOnComplete {
-            apiService.loadUserData(user).flatMapCompletable {
-                saveUserData(it)
-            }
+
+    fun validateUserName(user: String): Completable {
+        return Completable.fromCallable {
+            userName = user
+            userValidations.validateLoginData(user)
         }
+    }
 
+    fun loadUserRemoteData(): Completable {
+        return apiService.loadUserData(userName).flatMapCompletable {
+            saveUserData(it)
+        }
     }
 
     fun saveUserData(apiUserResponse: ApiUserResponse): CompletableSource? {
@@ -38,11 +44,11 @@ class UserRepository @Inject constructor(
                 apiUserResponse.followers,
                 apiUserResponse.following
             )
-            userDao.insert(user)
+            userDao.addNewUser(user)
         }
     }
 
-    fun getUserData(): LiveData<List<User>>{
+    fun getUserData(): LiveData<List<User>> {
         return userDao.selectUser()
     }
 

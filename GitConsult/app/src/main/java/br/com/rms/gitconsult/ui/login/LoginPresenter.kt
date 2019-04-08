@@ -17,24 +17,22 @@ class LoginPresenter(
     override fun login() {
         val userName = view?.getUserName()
         userName?.let {
-            userRepository.loadRemoteUserData(it)
+            userRepository.validateUserName(it)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(object : CompletableObserver {
                     override fun onComplete() {
-                        view?.loginSuccess()
-                        view?.hideLoader()
+                        getUserRemoteData()
                     }
 
                     override fun onSubscribe(d: Disposable) {
                         view?.showLoader()
-
                     }
 
                     override fun onError(e: Throwable) {
-                        if(e is ValidationException){
+                        if (e is ValidationException) {
                             view?.onValidationException(e)
-                        }else {
+                        } else {
                             view?.showErrorMessage(R.string.error_on_login)
                             e.printStackTrace()
                         }
@@ -45,7 +43,35 @@ class LoginPresenter(
 
                 })
         }
+    }
 
+    fun getUserRemoteData() {
+        userRepository.loadUserRemoteData()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : CompletableObserver {
+                override fun onComplete() {
+                    view?.loginSuccess()
+                    view?.hideLoader()
+                }
+
+                override fun onSubscribe(d: Disposable) {
+                    view?.showLoader()
+                }
+
+                override fun onError(e: Throwable) {
+                    if (e is ValidationException) {
+                        view?.onValidationException(e)
+                    } else {
+                        view?.showErrorMessage(R.string.error_on_login)
+                        e.printStackTrace()
+                    }
+                    view?.hideLoader()
+
+
+                }
+
+            })
 
     }
 }

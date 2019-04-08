@@ -6,4 +6,5 @@
     <string name="login_label">Login</string>
     <string name="error_on_login">Ocorren um erro durante o login</string>
     <string name="error_user_name_is_empty">Campo nome de usuário vazio</string>
+    <string name="error_on_load_repository_list">Erro ao carregar os dados dos repositórios</string>
 </resources>
