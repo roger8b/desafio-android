@@ -42,7 +42,8 @@ class UserRepository @Inject constructor(
                 apiUserResponse.public_repos,
                 apiUserResponse.public_gists,
                 apiUserResponse.followers,
-                apiUserResponse.following
+                apiUserResponse.following,
+                apiUserResponse.avatar_url
             )
             userDao.addNewUser(user)
         }

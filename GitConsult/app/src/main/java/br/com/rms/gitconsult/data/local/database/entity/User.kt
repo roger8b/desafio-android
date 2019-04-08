@@ -11,5 +11,6 @@ data class User(
     var public_repos: Int? = 0,
     var public_gists: Int? = 0,
     var followers: Int? = 0,
-    var following: Int? =0
+    var following: Int? =0,
+    var avatar_url: String?= ""
     )

@@ -7,9 +7,19 @@ import com.bumptech.glide.request.RequestOptions
 
 fun ImageView.loadDrawable(url: Int){
 
-    var requestOptions = RequestOptions.fitCenterTransform()
+    val requestOptions = RequestOptions.fitCenterTransform()
     Glide.with(context)
         .load(url)
         .apply(requestOptions)
         .into(this)
+}
+
+fun ImageView.loadUrl(url: String){
+
+    val requestOptions = RequestOptions.fitCenterTransform()
+    Glide.with(context)
+        .load(url)
+        .apply(requestOptions)
+        .into(this)
+
 }

@@ -13,8 +13,8 @@ import br.com.rms.gitconsult.base.view.BaseFragment
 import br.com.rms.gitconsult.data.local.database.entity.Repository
 import br.com.rms.gitconsult.data.local.database.entity.User
 import br.com.rms.gitconsult.utils.EndlessRecyclerViewScrollListener
+import br.com.rms.gitconsult.utils.extensions.loadUrl
 import kotlinx.android.synthetic.main.fragment_home.*
-import kotlinx.android.synthetic.main.item_repository.*
 
 class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), HomeContract.View {
 
@@ -71,21 +71,19 @@ class HomeFragment : BaseFragment<HomeContract.View, HomeContract.Presenter>(), 
 
     private fun userDataIsReady(user: User): Boolean {
         tvUserName.text = user.name
-        tvEmail.text = user.email
-        if (user.email.isNullOrEmpty()) {
-            ivEmail.visibility = View.GONE
-        }
-        tvPublicRepository.text = user.public_repos.toString()
+        tvLogin.text = user.login
+        tvPublicRepository.text = getString(R.string.user_repositories, user.public_repos.toString())
         user.login?.let { presenter.loadRepositories(it) }
+        ivUserImage.loadUrl(user.avatar_url.toString())
         return true
 
     }
 
-    fun openRepositoryInBrowser(repository: Repository){
-            val url = repository.html_url
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(url)
-            startActivity(intent)
+    fun openRepositoryInBrowser(repository: Repository) {
+        val url = repository.html_url
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.data = Uri.parse(url)
+        startActivity(intent)
     }
 
     override fun showLoading() {
