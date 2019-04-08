@@ -8,7 +8,7 @@ data class ApiRepoResponse(
     val `private`: Boolean?,
     val owner: Owner?,
     val html_url: String?,
-    val description: Any?,
+    val description: String?,
     val fork: Boolean?,
     val url: String?,
     val forks_url: String?,

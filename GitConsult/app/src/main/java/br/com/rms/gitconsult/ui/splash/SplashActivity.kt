@@ -2,11 +2,10 @@ package br.com.rms.gitconsult.ui.splash
 
 import android.app.Activity
 import android.content.Intent
-import androidx.fragment.app.Fragment
 import br.com.rms.gitconsult.R
 import br.com.rms.gitconsult.base.view.BaseActivity
+import br.com.rms.gitconsult.ui.home.HomeActivity
 import br.com.rms.gitconsult.ui.login.LoginActivity
-import dagger.android.AndroidInjector
 
 const val REQUEST_CODE_LOGIN = 1000
 const val REQUEST_CODE_HOME = 1001
@@ -36,7 +35,7 @@ class SplashActivity : BaseActivity() {
 
     private fun processLoginResult(resultCode: Int) {
         when (resultCode) {
-//            Activity.RESULT_OK -> startHomeActivity()
+            Activity.RESULT_OK -> startHomeActivity()
             Activity.RESULT_CANCELED -> finishThis()
         }
     }
@@ -47,11 +46,11 @@ class SplashActivity : BaseActivity() {
         }
     }
 
-    /*private fun startHomeActivity() {
+    private fun startHomeActivity() {
         val intent = Intent(this, HomeActivity::class.java)
         startActivityForResult(intent, REQUEST_CODE_HOME)
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-    }*/
+    }
 
     private fun startLoginActivity() {
         val intent = Intent(this, LoginActivity::class.java)

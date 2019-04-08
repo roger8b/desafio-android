@@ -1,5 +1,6 @@
 package br.com.rms.gitconsult.di.model
 
+import br.com.rms.gitconsult.ui.home.HomeActivity
 import br.com.rms.gitconsult.ui.login.LoginActivity
 import br.com.rms.gitconsult.ui.splash.SplashActivity
 import dagger.Module
@@ -13,6 +14,9 @@ abstract class ActivityModule {
 
     @ContributesAndroidInjector(modules = [FragmentModule::class])
     abstract fun contributeLoginActivity(): LoginActivity
+
+    @ContributesAndroidInjector(modules = [FragmentModule::class])
+    abstract fun contributeHomeActivity(): HomeActivity
 
 
 }

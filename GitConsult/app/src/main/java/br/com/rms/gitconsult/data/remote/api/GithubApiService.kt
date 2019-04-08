@@ -14,6 +14,7 @@ interface GithubApiService {
 
     @GET(END_POINT_REPOS)
     fun loadUserRepos(
+        @Path(KEY_USER_NAME) user: String,
         @Query(KEY_PAGE) page: Int,
         @Query(KEY_PER_PAGE) perPage: Int
     ): Single<List<ApiRepoResponse>>
